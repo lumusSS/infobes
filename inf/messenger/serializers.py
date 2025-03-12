@@ -7,3 +7,8 @@ class PublicKeySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.RSAKey
         fields = ['public_key', 'n']
+        
+class ChatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Chat
+        fields = ['name', 'encrypt_algorithm']

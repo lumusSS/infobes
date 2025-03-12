@@ -6,6 +6,10 @@ from . import models
 class RSAKeyAdmin(admin.ModelAdmin):
     list_display = ['chat']
     
+@admin.register(models.RSAOutputKey)
+class RSAOutputKeyAdmin(admin.ModelAdmin):
+    list_display = ['user']
+    
 @admin.register(models.Message)
 class MessageAdmin(admin.ModelAdmin):
     list_display = ['chat']
@@ -13,3 +17,4 @@ class MessageAdmin(admin.ModelAdmin):
 @admin.register(models.Chat)
 class ChatAdmin(admin.ModelAdmin):
     list_display = ['name']
+    

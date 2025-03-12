@@ -15,7 +15,11 @@ from djoser.views import TokenCreateView
 from djoser import signals, utils
 from djoser.conf import settings as settings_djoser
 
+from django.contrib.auth import get_user_model
+
 from . import serializers
+
+User = get_user_model()
 
 
 class LoginAPIView(TokenCreateView):
@@ -55,3 +59,4 @@ class UserRegistrationAPIView(CreateAPIView):
             response = Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
         
         return response
+    

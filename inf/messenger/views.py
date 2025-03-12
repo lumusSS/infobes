@@ -9,6 +9,19 @@ from . import models, serializers
 
 from .rsa.RsaAlgorithm import RSA
 
+class GetChatsForUser(ListAPIView):
+    queryset = models.Chat.objects.all()
+    serializer_class = serializers.ChatSerializer
+    
+    def get_queryset(self):
+        
+        user_id = self.kwargs.get('user_id')
+        
+        chats = models.Chat.objects.filter(users__id = user_id)
+        
+        return chats
+    
+
 class SendingPublicKeyAPI(APIView):
     def get(self, request, chat_id):
         chat = models.Chat.objects.get(pk=chat_id)
